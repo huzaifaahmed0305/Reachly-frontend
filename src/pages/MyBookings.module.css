@@ -1,0 +1,51 @@
+.page { max-width: 760px; margin: 0 auto; padding: 48px 32px; }
+.page h1 { font-family: 'DM Serif Display', serif; font-size: 32px; font-weight: 400; margin-bottom: 24px; }
+
+.filters { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+.filter, .filterActive {
+  border: 0.5px solid var(--border); border-radius: 20px;
+  padding: 6px 16px; font-size: 13px; background: none; color: var(--text2);
+  transition: all 0.15s;
+}
+.filterActive { border-color: var(--brand); color: var(--brand); background: rgba(200,169,126,0.08); }
+.filter:hover { color: var(--text); border-color: var(--border2); }
+
+.loading { display: flex; align-items: center; justify-content: center; padding: 60px; }
+.empty { color: var(--text3); font-size: 14px; padding: 48px 0; text-align: center; }
+
+.list { display: flex; flex-direction: column; gap: 14px; }
+
+.card {
+  background: var(--surface2); border: 0.5px solid var(--border);
+  border-radius: var(--radius-lg); padding: 22px;
+  transition: border-color 0.2s;
+}
+.card:hover { border-color: var(--border2); }
+
+.cardTop { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; gap: 12px; }
+.sessionTitle { font-size: 16px; font-weight: 500; margin-bottom: 4px; }
+.influencer { font-size: 13px; color: var(--text2); }
+
+.badge { border-radius: 20px; padding: 4px 12px; font-size: 12px; white-space: nowrap; }
+.success { background: rgba(76,175,138,0.15); color: var(--success); }
+.warning { background: rgba(200,169,126,0.15); color: var(--brand); }
+.muted { background: var(--surface3); color: var(--text3); }
+.danger { background: rgba(226,90,90,0.12); color: var(--danger); }
+
+.cardMeta { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
+.metaItem { display: flex; flex-direction: column; gap: 2px; }
+.metaLabel { font-size: 11px; color: var(--text3); letter-spacing: 0.3px; }
+.metaItem span:last-child { font-size: 13px; }
+.ref { font-family: monospace; color: var(--brand); font-size: 12px !important; }
+
+.cardActions { display: flex; gap: 10px; align-items: center; border-top: 0.5px solid var(--border); padding-top: 14px; }
+.joinBtn {
+  background: var(--brand); color: #0C0C0C; border-radius: 20px;
+  padding: 8px 18px; font-size: 13px; font-weight: 500; transition: background 0.15s;
+}
+.joinBtn:hover { background: #D4B68A; }
+.cancelBtn {
+  background: none; border: 0.5px solid var(--border); color: var(--text3);
+  border-radius: 20px; padding: 8px 16px; font-size: 13px; transition: all 0.15s;
+}
+.cancelBtn:hover { border-color: var(--danger); color: var(--danger); }

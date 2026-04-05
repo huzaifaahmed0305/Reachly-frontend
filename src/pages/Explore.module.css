@@ -1,0 +1,61 @@
+.page { max-width: 1100px; margin: 0 auto; padding: 60px 32px; }
+
+.header { text-align: center; margin-bottom: 48px; }
+.header h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 40px; font-weight: 400; margin-bottom: 10px;
+}
+.header p { color: var(--text2); margin-bottom: 28px; }
+
+.search {
+  width: 100%; max-width: 420px;
+  background: var(--surface2);
+  border: 0.5px solid var(--border);
+  border-radius: 30px;
+  padding: 12px 22px;
+  color: var(--text);
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+.search:focus { border-color: var(--brand); }
+.search::placeholder { color: var(--text3); }
+
+.loading, .empty {
+  text-align: center; padding: 80px 0; color: var(--text2);
+  display: flex; align-items: center; justify-content: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--surface2);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex; flex-direction: column; gap: 8px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.card:hover { border-color: var(--border2); transform: translateY(-3px); }
+
+.avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+  color: #0C0C0C; font-family: 'DM Serif Display', serif;
+  font-size: 22px; display: flex; align-items: center; justify-content: center;
+  margin-bottom: 4px;
+}
+.name { font-size: 16px; font-weight: 500; }
+.handle { font-size: 12px; color: var(--text3); }
+.bio { font-size: 13px; color: var(--text2); line-height: 1.5; margin: 4px 0; }
+.meta { display: flex; justify-content: space-between; font-size: 12px; color: var(--text3); margin-top: 4px; }
+.bookBtn {
+  margin-top: 10px; background: rgba(200,169,126,0.1);
+  border: 0.5px solid var(--border2); border-radius: 20px;
+  padding: 8px 16px; font-size: 13px; color: var(--brand);
+  text-align: center; transition: background 0.2s;
+}
+.card:hover .bookBtn { background: rgba(200,169,126,0.18); }

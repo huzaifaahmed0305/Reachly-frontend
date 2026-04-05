@@ -1,0 +1,102 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--surface2);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  animation: fadeUp 0.4s ease;
+}
+
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  color: var(--brand);
+  margin-bottom: 28px;
+}
+
+.card h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+
+.sub { font-size: 14px; color: var(--text2); margin-bottom: 28px; }
+
+.error {
+  background: rgba(226,90,90,0.1);
+  border: 0.5px solid rgba(226,90,90,0.3);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--danger);
+  margin-bottom: 20px;
+}
+
+.roleToggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.roleBtn, .roleActive {
+  border: 0.5px solid var(--border);
+  background: var(--surface3);
+  color: var(--text2);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  font-size: 13px;
+  transition: all 0.15s;
+}
+.roleActive {
+  border-color: var(--brand);
+  background: rgba(200,169,126,0.1);
+  color: var(--brand);
+}
+.roleBtn:hover { border-color: var(--border2); color: var(--text); }
+
+.form { display: flex; flex-direction: column; gap: 16px; }
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 12px; color: var(--text2); letter-spacing: 0.3px; }
+.field input {
+  background: var(--surface3);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  color: var(--text);
+  transition: border-color 0.2s;
+}
+.field input:focus { border-color: var(--brand); }
+.field input::placeholder { color: var(--text3); }
+
+.btn {
+  background: var(--brand);
+  color: #0C0C0C;
+  border: none;
+  border-radius: var(--radius);
+  padding: 13px;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 4px;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+}
+.btn:hover:not(:disabled) { background: #D4B68A; }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.footer { text-align: center; font-size: 13px; color: var(--text2); margin-top: 24px; }
+.footer a { color: var(--brand); }

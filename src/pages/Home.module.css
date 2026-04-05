@@ -1,0 +1,121 @@
+.page { min-height: 100vh; }
+
+.hero {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 100px 32px 80px;
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  border: 0.5px solid var(--border2);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 12px;
+  color: var(--text2);
+  margin-bottom: 32px;
+  animation: fadeUp 0.5s ease;
+}
+
+.headline {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(40px, 7vw, 72px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+  animation: fadeUp 0.5s 0.1s ease both;
+}
+.headline em { color: var(--brand); font-style: italic; }
+
+.sub {
+  font-size: 16px;
+  color: var(--text2);
+  line-height: 1.7;
+  margin-bottom: 40px;
+  animation: fadeUp 0.5s 0.2s ease both;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 56px;
+  animation: fadeUp 0.5s 0.3s ease both;
+}
+
+.btnPrimary {
+  background: var(--brand);
+  color: #0C0C0C;
+  padding: 13px 28px;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 15px;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-block;
+}
+.btnPrimary:hover { background: #D4B68A; transform: translateY(-1px); }
+
+.btnGhost {
+  border: 0.5px solid var(--border2);
+  color: var(--text2);
+  padding: 13px 28px;
+  border-radius: 30px;
+  font-size: 15px;
+  transition: all 0.2s;
+  display: inline-block;
+}
+.btnGhost:hover { border-color: var(--brand); color: var(--text); }
+
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  animation: fadeUp 0.5s 0.4s ease both;
+}
+.stat { text-align: center; font-size: 13px; color: var(--text3); }
+.stat span { display: block; font-size: 22px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
+.statDiv { width: 1px; height: 32px; background: var(--border); }
+
+.howSection {
+  border-top: 0.5px solid var(--border);
+  padding: 80px 32px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.howSection h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px; font-weight: 400;
+  text-align: center; margin-bottom: 48px;
+}
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+.step {
+  background: var(--surface2);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  transition: border-color 0.2s;
+}
+.step:hover { border-color: var(--border2); }
+.stepNum { font-family: 'DM Serif Display', serif; font-size: 32px; color: var(--brand); margin-bottom: 12px; }
+.stepTitle { font-size: 16px; font-weight: 500; margin-bottom: 8px; }
+.stepDesc { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
+.ctaSection {
+  background: var(--surface2);
+  border-top: 0.5px solid var(--border);
+  border-bottom: 0.5px solid var(--border);
+  padding: 80px 32px;
+  text-align: center;
+}
+.ctaSection h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px; font-weight: 400; margin-bottom: 14px;
+}
+.ctaSection p { color: var(--text2); max-width: 480px; margin: 0 auto 32px; line-height: 1.7; }

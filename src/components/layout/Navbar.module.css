@@ -1,0 +1,77 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 64px;
+  border-bottom: 0.5px solid var(--border);
+  background: rgba(12,12,12,0.92);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--brand);
+  letter-spacing: 0.3px;
+}
+.logo span { color: var(--text); }
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 14px;
+}
+
+.links a {
+  color: var(--text2);
+  transition: color 0.2s;
+}
+.links a:hover, .links a.active { color: var(--text); }
+
+.btnPrimary {
+  background: var(--brand);
+  color: #0C0C0C !important;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 500;
+  transition: background 0.2s !important;
+}
+.btnPrimary:hover { background: #D4B68A !important; }
+
+.avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #0C0C0C;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 500; font-size: 14px;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: var(--surface2);
+  border: 0.5px solid var(--border2);
+  border-radius: var(--radius);
+  padding: 12px;
+  min-width: 180px;
+  animation: fadeIn 0.15s ease;
+}
+.dropUser { font-size: 13px; font-weight: 500; color: var(--text); }
+.dropRole { font-size: 11px; color: var(--text3); margin-top: 2px; text-transform: capitalize; }
+.dropDivider { border: none; border-top: 0.5px solid var(--border); margin: 10px 0; }
+.dropdown button {
+  width: 100%; background: none; border: none;
+  text-align: left; font-size: 13px; color: var(--text2);
+  padding: 6px 0; transition: color 0.15s;
+}
+.dropdown button:hover { color: var(--danger); }
