@@ -9,10 +9,15 @@ import InfluencerProfile from './pages/InfluencerProfile'
 import BookingFlow from './pages/BookingFlow'
 import Dashboard from './pages/Dashboard'
 import MyBookings from './pages/MyBookings'
+import Admin from './pages/Admin'
 
 const ProtectedRoute = ({ children, role }) => {
   const { user, loading } = useAuth()
-  if (loading) return <div style={{display:'flex',alignItems:'center',justifyContent:'center',height:'100vh'}}><div className="spinner"/></div>
+  if (loading) return (
+    <div style={{ display:'flex', alignItems:'center', justifyContent:'center', height:'100vh', background:'#0C0C0C' }}>
+      <div className="spinner"/>
+    </div>
+  )
   if (!user) return <Navigate to="/login" replace />
   if (role && user.role !== role) return <Navigate to="/" replace />
   return children
@@ -22,15 +27,16 @@ const AppRoutes = () => (
   <>
     <Navbar />
     <Routes>
-      <Route path="/"                    element={<Home />} />
-      <Route path="/login"               element={<Login />} />
-      <Route path="/register"            element={<Register />} />
-      <Route path="/explore"             element={<Explore />} />
-      <Route path="/creator/:handle"     element={<InfluencerProfile />} />
-      <Route path="/book/:handle"        element={<ProtectedRoute><BookingFlow /></ProtectedRoute>} />
-      <Route path="/dashboard"           element={<ProtectedRoute role="influencer"><Dashboard /></ProtectedRoute>} />
-      <Route path="/my-bookings"         element={<ProtectedRoute><MyBookings /></ProtectedRoute>} />
-      <Route path="*"                    element={<Navigate to="/" replace />} />
+      <Route path="/"                element={<Home />} />
+      <Route path="/login"           element={<Login />} />
+      <Route path="/register"        element={<Register />} />
+      <Route path="/explore"         element={<Explore />} />
+      <Route path="/creator/:handle" element={<InfluencerProfile />} />
+      <Route path="/book/:handle"    element={<ProtectedRoute><BookingFlow /></ProtectedRoute>} />
+      <Route path="/dashboard"       element={<ProtectedRoute role="influencer"><Dashboard /></ProtectedRoute>} />
+      <Route path="/my-bookings"     element={<ProtectedRoute><MyBookings /></ProtectedRoute>} />
+      <Route path="/admin"           element={<Admin />} />
+      <Route path="*"                element={<Navigate to="/" replace />} />
     </Routes>
   </>
 )
