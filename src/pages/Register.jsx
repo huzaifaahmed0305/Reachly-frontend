@@ -22,7 +22,7 @@ export default function Register() {
     setError(''); setLoading(true)
     try {
       const user = await register(form)
-      navigate(user.role === 'influencer' ? '/dashboard' : '/explore')
+      navigate(user.role === 'influencer' ? '/onboarding' : '/explore')
     } catch (err) {
       setError(err.response?.data?.error || err.response?.data?.errors?.[0]?.msg || 'Registration failed')
     } finally { setLoading(false) }

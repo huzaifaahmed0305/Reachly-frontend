@@ -1,0 +1,290 @@
+/* Onboarding CSS — src/pages/Onboarding.module.css */
+
+.page {
+  min-height: 100vh;
+  background: #0C0C0C;
+  padding: 48px 32px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.wrap {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* PROGRESS */
+.progress {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.progressItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+.progressItem:last-child { flex: 0; }
+
+.stepDot {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: #1E1E1E;
+  border: 0.5px solid rgba(200,169,126,0.2);
+  font-size: 13px;
+  display: flex; align-items: center; justify-content: center;
+  color: #706860;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+.stepActive {
+  border-color: #C8A97E;
+  color: #C8A97E;
+  background: rgba(200,169,126,0.08);
+}
+.stepDone {
+  background: #C8A97E;
+  color: #0C0C0C;
+  border-color: #C8A97E;
+  font-size: 12px;
+}
+.stepLabel {
+  font-size: 12px;
+  color: #706860;
+  white-space: nowrap;
+  transition: color 0.3s;
+}
+.stepLabelActive { color: #F0EBE1; }
+.stepLine {
+  flex: 1;
+  height: 0.5px;
+  background: rgba(200,169,126,0.15);
+  margin: 0 8px;
+  transition: background 0.3s;
+}
+.stepLineDone { background: #C8A97E; }
+
+/* HEADER */
+.header { margin-bottom: 28px; animation: fadeUp 0.4s ease; }
+.stepTag {
+  font-size: 11px;
+  color: #C8A97E;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.header h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 32px; font-weight: 400;
+  color: #F0EBE1; margin-bottom: 6px;
+}
+.header p { font-size: 14px; color: #9A9080; }
+
+/* ERROR */
+.error {
+  background: rgba(226,90,90,0.1);
+  border: 0.5px solid rgba(226,90,90,0.3);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #E25A5A;
+  margin-bottom: 16px;
+}
+
+/* CARD */
+.card {
+  background: #141414;
+  border: 0.5px solid rgba(200,169,126,0.15);
+  border-radius: 18px;
+  padding: 28px;
+  animation: fadeUp 0.35s ease;
+}
+
+/* FIELDS */
+.field { margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 12px; color: #9A9080; letter-spacing: 0.3px; }
+.req { color: #C8A97E; }
+.field input, .field textarea {
+  background: #1E1E1E;
+  border: 0.5px solid rgba(200,169,126,0.15);
+  border-radius: 10px;
+  padding: 11px 14px;
+  color: #F0EBE1;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: vertical;
+}
+.field input:focus, .field textarea:focus { border-color: #C8A97E; }
+.field input::placeholder, .field textarea::placeholder { color: #3E3830; }
+.hint { font-size: 11px; color: #605850; line-height: 1.5; }
+.charCount { font-size: 11px; color: #605850; text-align: right; }
+
+.handleWrap {
+  display: flex;
+  align-items: center;
+  background: #1E1E1E;
+  border: 0.5px solid rgba(200,169,126,0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.handleWrap:focus-within { border-color: #C8A97E; }
+.handlePrefix {
+  padding: 11px 12px;
+  font-size: 13px;
+  color: #605850;
+  background: #161616;
+  border-right: 0.5px solid rgba(200,169,126,0.1);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.handleInput {
+  flex: 1;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 11px 14px !important;
+  outline: none;
+}
+
+.fieldRow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* BUTTONS */
+.btn {
+  width: 100%;
+  background: #C8A97E; color: #0C0C0C;
+  border: none; border-radius: 12px;
+  padding: 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px; font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 48px;
+}
+.btn:hover:not(:disabled) { background: #D4B68A; }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.btnSecondary {
+  background: #1E1E1E;
+  border: 0.5px solid rgba(200,169,126,0.2);
+  color: #9A9080; border-radius: 12px;
+  padding: 14px 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px; cursor: pointer;
+  transition: all 0.15s;
+}
+.btnSecondary:hover { color: #F0EBE1; border-color: rgba(200,169,126,0.4); }
+.btnRow { display: flex; gap: 10px; margin-top: 8px; }
+.btnRow .btn { flex: 1; }
+
+/* SESSION CARDS */
+.sessionGrid { display: flex; flex-direction: column; gap: 12px; margin-bottom: 12px; }
+.sessionCard {
+  background: #1E1E1E;
+  border: 0.5px solid rgba(200,169,126,0.15);
+  border-radius: 14px;
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+.sessionCard:hover { border-color: rgba(200,169,126,0.35); }
+.sessionSelected { border-color: #C8A97E !important; background: rgba(200,169,126,0.06); }
+.sessionCheck {
+  position: absolute; top: 16px; right: 16px;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: #C8A97E; color: #0C0C0C;
+  font-size: 12px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.2s;
+}
+.sessionSelected .sessionCheck { opacity: 1; }
+.sessionDur { font-size: 10px; color: #706860; letter-spacing: 1px; margin-bottom: 4px; }
+.sessionTitle { font-size: 16px; font-weight: 500; color: #F0EBE1; margin-bottom: 4px; }
+.sessionDesc { font-size: 13px; color: #9A9080; margin-bottom: 10px; line-height: 1.5; }
+.sessionPrice { font-size: 18px; font-weight: 500; color: #C8A97E; }
+
+/* PRICING */
+.pricingList { display: flex; flex-direction: column; gap: 16px; margin-bottom: 12px; }
+.pricingRow {
+  display: flex; gap: 20px; align-items: flex-start;
+  background: #1E1E1E;
+  border: 0.5px solid rgba(200,169,126,0.15);
+  border-radius: 14px; padding: 18px 20px;
+}
+.pricingLeft { flex: 1; }
+.pricingTitle { font-size: 16px; font-weight: 500; color: #F0EBE1; margin-bottom: 2px; }
+.pricingDur { font-size: 12px; color: #706860; margin-bottom: 10px; }
+.descInput {
+  width: 100%;
+  background: #282828;
+  border: 0.5px solid rgba(200,169,126,0.1);
+  border-radius: 8px; padding: 8px 12px;
+  color: #9A9080;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; outline: none;
+  transition: border-color 0.2s;
+}
+.descInput:focus { border-color: #C8A97E; }
+.pricingRight { flex-shrink: 0; text-align: right; }
+.priceLabel { font-size: 11px; color: #706860; margin-bottom: 6px; }
+.priceInputWrap {
+  display: flex; align-items: center; gap: 6px;
+  background: #282828;
+  border: 0.5px solid rgba(200,169,126,0.2);
+  border-radius: 8px; padding: 6px 12px;
+  margin-bottom: 6px;
+}
+.pricePre { font-size: 13px; color: #706860; }
+.priceInput {
+  width: 90px; background: transparent;
+  border: none; outline: none;
+  color: #C8A97E;
+  font-size: 18px; font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  text-align: right;
+}
+.priceHint { font-size: 11px; color: #4CAF8A; }
+.feeNote { font-size: 12px; color: #605850; text-align: center; margin-bottom: 20px; }
+
+/* SUCCESS */
+.successWrap { text-align: center; padding: 12px 0; }
+.successIcon { font-size: 56px; margin-bottom: 16px; display: block; }
+.successWrap h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px; font-weight: 400;
+  color: #F0EBE1; margin-bottom: 8px;
+}
+.successWrap p { font-size: 14px; color: #9A9080; margin-bottom: 28px; line-height: 1.6; }
+
+.linkBox {
+  background: #1E1E1E;
+  border: 0.5px solid rgba(200,169,126,0.3);
+  border-radius: 14px; padding: 20px;
+  margin-bottom: 24px;
+}
+.linkLabel { font-size: 11px; color: #706860; letter-spacing: 1px; margin-bottom: 8px; }
+.linkUrl {
+  font-size: 18px; font-weight: 500;
+  color: #C8A97E; margin-bottom: 14px;
+  word-break: break-all;
+}
+.copyBtn {
+  background: rgba(200,169,126,0.1);
+  border: 0.5px solid rgba(200,169,126,0.3);
+  border-radius: 20px; padding: 8px 24px;
+  font-size: 13px; color: #C8A97E;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: all 0.15s;
+}
+.copyBtn:hover { background: rgba(200,169,126,0.2); }
+
+.nextSteps {
+  background: #1E1E1E;
+  border-radius: 14px; padding: 20px;
+  margin-bottom: 24px; text-align: left;
+}
+.nextTitle { font-size: 13px; font-weight: 500; color: #F0EBE1; margin-bottom: 12px; }
+.nextItem { font-size: 14px; color: #9A9080; padding: 6px 0; line-height: 1.5; }
