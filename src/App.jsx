@@ -11,6 +11,8 @@ import Dashboard from './pages/Dashboard'
 import MyBookings from './pages/MyBookings'
 import Admin from './pages/Admin'
 import Onboarding from './pages/Onboarding'
+import ForgotPassword from './pages/forgotpassword'
+
 
 const ProtectedRoute = ({ children, role }) => {
   const { user, loading } = useAuth()
@@ -39,6 +41,7 @@ const AppRoutes = () => (
       <Route path="/admin"           element={<Admin />} />
       <Route path="/onboarding" element={<ProtectedRoute role="influencer"><Onboarding /></ProtectedRoute>} />
       <Route path="*"                element={<Navigate to="/" replace />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
     </Routes>
   </>
 )
