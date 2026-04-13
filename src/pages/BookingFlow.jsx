@@ -186,10 +186,25 @@ export default function BookingFlow() {
               <div className={s.confRow}><span>Amount paid</span><span>Rs {total.toLocaleString()}</span></div>
               <div className={s.confRow}><span>Ref</span><span className={s.ref}>{booking?.booking_ref || 'RCH-XXXXXXXX'}</span></div>
             </div>
+
+{/* Google Meet Link */}
+<div style={{background:'rgba(76,175,138,0.08)', border:'1.5px solid #4CAF8A', borderRadius:14, padding:20, marginBottom:20}}>
+  <div style={{fontSize:12, color:'#4CAF8A', letterSpacing:2, marginBottom:10}}>YOUR GOOGLE MEET LINK</div>
+  <a href={booking?.meet_link} target="_blank" rel="noreferrer"
+    style={{display:'block', background:'#4CAF8A', color:'#0C0C0C', borderRadius:30, padding:'12px 24px', fontSize:15, fontWeight:500, textDecoration:'none', marginBottom:8}}>
+    Join Google Meet →
+  </a>
+  <div style={{fontSize:11, color:'#4CAF8A', opacity:0.7, wordBreak:'break-all'}}>{booking?.meet_link}</div>
+</div>
+          
             <button className={s.btn} onClick={() => navigate('/my-bookings')}>View my bookings →</button>
           </div>
         )}
-      </div>
+
+</div>
     </div>
   )
 }
+
+
+   
