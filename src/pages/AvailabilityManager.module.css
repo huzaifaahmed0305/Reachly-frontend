@@ -1,0 +1,75 @@
+.page { max-width: 860px; margin: 0 auto; padding: 40px 32px; font-family: 'DM Sans', sans-serif; color: #F0EBE1; min-height: 100vh; background: #0C0C0C; }
+.loading { display: flex; align-items: center; justify-content: center; height: 60vh; }
+
+.header { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 32px; flex-wrap: wrap; }
+.backBtn { background: none; border: 0.5px solid rgba(200,169,126,0.2); color: #9A9080; border-radius: 20px; padding: 8px 16px; font-size: 13px; cursor: pointer; font-family: 'DM Sans',sans-serif; transition: all 0.15s; flex-shrink: 0; margin-top: 4px; }
+.backBtn:hover { color: #F0EBE1; border-color: rgba(200,169,126,0.4); }
+.header h1 { font-family: 'DM Serif Display',serif; font-size: 28px; font-weight: 400; margin-bottom: 4px; }
+.header p { font-size: 13px; color: #9A9080; }
+.statsRow { display: flex; gap: 16px; margin-left: auto; }
+.stat { background: #161616; border: 0.5px solid rgba(200,169,126,0.15); border-radius: 12px; padding: 12px 20px; text-align: center; }
+.stat span { display: block; font-size: 22px; font-weight: 500; color: #C8A97E; margin-bottom: 2px; }
+.stat { font-size: 11px; color: #9A9080; }
+
+.error { background: rgba(226,90,90,0.1); border: 0.5px solid rgba(226,90,90,0.3); border-radius: 10px; padding: 10px 14px; font-size: 13px; color: #E25A5A; margin-bottom: 16px; }
+.success { background: rgba(76,175,138,0.1); border: 0.5px solid rgba(76,175,138,0.3); border-radius: 10px; padding: 10px 14px; font-size: 13px; color: #4CAF8A; margin-bottom: 16px; }
+
+.tabs { display: flex; gap: 8px; margin-bottom: 24px; }
+.tab { background: none; border: 0.5px solid rgba(200,169,126,0.15); color: #9A9080; border-radius: 20px; padding: 8px 20px; font-size: 13px; cursor: pointer; font-family: 'DM Sans',sans-serif; transition: all 0.15s; }
+.tabActive { border-color: #C8A97E; color: #C8A97E; background: rgba(200,169,126,0.08); }
+
+.weeklyInfo { font-size: 13px; color: #9A9080; margin-bottom: 20px; line-height: 1.6; background: #161616; border-radius: 10px; padding: 12px 16px; }
+
+/* Day rows */
+.dayRow { background: #141414; border: 0.5px solid rgba(200,169,126,0.1); border-radius: 14px; padding: 18px; margin-bottom: 12px; transition: border-color 0.2s; }
+.dayActive { border-color: rgba(200,169,126,0.25); }
+
+.dayHeader { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0; }
+.dayActive .dayHeader { margin-bottom: 16px; }
+.dayName { font-size: 15px; font-weight: 500; color: #F0EBE1; margin-bottom: 2px; }
+.dayCount { font-size: 12px; color: #9A9080; }
+
+/* Toggle switch */
+.toggle { position: relative; display: inline-block; width: 44px; height: 24px; cursor: pointer; }
+.toggle input { opacity: 0; width: 0; height: 0; }
+.toggleSlider { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: #2A2520; border-radius: 24px; transition: 0.2s; }
+.toggleSlider::before { content: ''; position: absolute; width: 18px; height: 18px; left: 3px; bottom: 3px; background: #605850; border-radius: 50%; transition: 0.2s; }
+.toggle input:checked + .toggleSlider { background: rgba(200,169,126,0.3); }
+.toggle input:checked + .toggleSlider::before { transform: translateX(20px); background: #C8A97E; }
+
+/* Time grid */
+.timeGrid { display: flex; flex-wrap: wrap; gap: 8px; }
+.timeBtn { background: #1E1E1E; border: 0.5px solid rgba(200,169,126,0.12); border-radius: 8px; padding: 8px 14px; font-size: 12px; color: #9A9080; cursor: pointer; font-family: 'DM Sans',sans-serif; transition: all 0.15s; }
+.timeBtn:hover { border-color: rgba(200,169,126,0.3); color: #F0EBE1; }
+.timeBtnActive { background: rgba(200,169,126,0.12); border-color: #C8A97E; color: #C8A97E; font-weight: 500; }
+
+/* Save button */
+.saveBtn { width: 100%; background: #C8A97E; color: #0C0C0C; border: none; border-radius: 12px; padding: 14px; font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'DM Sans',sans-serif; margin-top: 20px; display: flex; align-items: center; justify-content: center; min-height: 48px; transition: background 0.2s; }
+.saveBtn:hover:not(:disabled) { background: #D4B68A; }
+.saveBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Block tab */
+.reasonRow { margin-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
+.reasonRow label { font-size: 12px; color: #9A9080; }
+.reasonRow input { background: #1E1E1E; border: 0.5px solid rgba(200,169,126,0.15); border-radius: 10px; padding: 10px 14px; color: #F0EBE1; font-family: 'DM Sans',sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s; }
+.reasonRow input:focus { border-color: #C8A97E; }
+.reasonRow input::placeholder { color: #3E3830; }
+
+/* Calendar grid */
+.calGrid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 24px; }
+.calDay { background: #141414; border: 0.5px solid rgba(200,169,126,0.1); border-radius: 12px; padding: 10px 6px; cursor: pointer; font-family: 'DM Sans',sans-serif; display: flex; flex-direction: column; align-items: center; gap: 2px; transition: all 0.15s; position: relative; }
+.calDay:hover { border-color: rgba(200,169,126,0.3); }
+.calToday { border-color: rgba(200,169,126,0.4); background: rgba(200,169,126,0.06); }
+.calBlocked { background: rgba(226,90,90,0.08); border-color: rgba(226,90,90,0.3); }
+.calDayName { font-size: 10px; color: #9A9080; }
+.calDayNum { font-size: 16px; font-weight: 500; color: #F0EBE1; }
+.calMonth { font-size: 10px; color: #605850; }
+.blockedX { position: absolute; top: 4px; right: 4px; font-size: 10px; color: #E25A5A; font-weight: 700; }
+
+/* Blocked list */
+.blockedList { background: #141414; border: 0.5px solid rgba(200,169,126,0.12); border-radius: 14px; padding: 16px; }
+.blockedTitle { font-size: 12px; color: #9A9080; letter-spacing: 0.5px; margin-bottom: 12px; }
+.blockedItem { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 0.5px solid rgba(200,169,126,0.08); font-size: 13px; }
+.blockedItem:last-child { border-bottom: none; }
+.unblockBtn { background: none; border: 0.5px solid rgba(76,175,138,0.3); color: #4CAF8A; border-radius: 20px; padding: 4px 12px; font-size: 12px; cursor: pointer; font-family: 'DM Sans',sans-serif; transition: all 0.15s; }
+.unblockBtn:hover { background: rgba(76,175,138,0.1); }

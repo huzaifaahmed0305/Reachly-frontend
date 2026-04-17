@@ -12,6 +12,7 @@ import MyBookings from './pages/MyBookings'
 import Admin from './pages/Admin'
 import Onboarding from './pages/Onboarding'
 import ForgotPassword from './pages/forgotpassword'
+import AvailabilityManager from './pages/AvailabilityManager'
 
 
 const ProtectedRoute = ({ children, role }) => {
@@ -42,6 +43,7 @@ const AppRoutes = () => (
       <Route path="/onboarding" element={<ProtectedRoute role="influencer"><Onboarding /></ProtectedRoute>} />
       <Route path="*"                element={<Navigate to="/" replace />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/availability" element={<ProtectedRoute role="influencer"><AvailabilityManager /></ProtectedRoute>} />
     </Routes>
   </>
 )
