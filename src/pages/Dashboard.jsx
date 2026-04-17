@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import api from '../lib/api'
 import { useAuth } from '../context/AuthContext'
 import s from './Dashboard.module.css'
+import { useNavigate } from 'react-router-dom'
 
 const STATUS_COLORS = { confirmed:'success', pending:'warning', completed:'muted', cancelled:'danger' }
 
@@ -9,6 +10,7 @@ export default function Dashboard() {
   const { user } = useAuth()
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
+  const navigate = useNavigate()
 
   useEffect(() => {
     api.get('/dashboard')
@@ -34,6 +36,22 @@ export default function Dashboard() {
           <h1>Creator Dashboard</h1>
         </div>
       </div>
+
+      <button
+  onClick={() => navigate('/availability')}
+  style={{
+    background:'rgba(200,169,126,0.1)',
+    border:'0.5px solid rgba(200,169,126,0.3)',
+    color:'#C8A97E',
+    borderRadius:20,
+    padding:'8px 20px',
+    fontSize:13,
+    cursor:'pointer',
+    fontFamily:"'DM Sans',sans-serif",
+  }}
+>
+  📅 Manage Availability
+</button>
 
       <div className={s.metrics}>
         {[

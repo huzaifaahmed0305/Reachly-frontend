@@ -12,7 +12,7 @@ import MyBookings from './pages/MyBookings'
 import Admin from './pages/Admin'
 import Onboarding from './pages/Onboarding'
 import ForgotPassword from './pages/forgotpassword'
-import AvailabilityManager from './pages/AvailabilityManager'
+import AvailabilityManager from './pages/availabilityManager'
 
 
 const ProtectedRoute = ({ children, role }) => {
