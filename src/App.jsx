@@ -7,11 +7,10 @@ import Register from './pages/Register'
 import Explore from './pages/Explore'
 import InfluencerProfile from './pages/InfluencerProfile'
 import BookingFlow from './pages/BookingFlow'
-import Dashboard from './pages/Dashboard'
 import MyBookings from './pages/MyBookings'
 import Admin from './pages/Admin'
 import Onboarding from './pages/Onboarding'
-import ForgotPassword from './pages/forgotpassword'
+import ForgotPassword from './pages/ForgotPassword'
 import AvailabilityManager from './pages/src/pages/AvailabilityManager.jsx'
 import CreatorDashboard from './pages/CreatorDashboard'
 import FollowerHome from './pages/FollowerHome'
@@ -38,14 +37,14 @@ const AppRoutes = () => (
       <Route path="/explore" element={<Explore />} />
       <Route path="/creator/:handle" element={<InfluencerProfile />} />
       <Route path="/book/:handle" element={<ProtectedRoute><BookingFlow /></ProtectedRoute>} />
-      
-      <Route path="/dashboard" element={<ProtectedRoute role="influencer"><Dashboard /></ProtectedRoute>} />
-      <Route path="/home" element={<FollowerHome />} />
-      
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+     
+      <Route path="/home" element={<ProtectedRoute><FollowerHome /></ProtectedRoute>} />
+      <Route path="/dashboard" element={<ProtectedRoute role="influencer"><CreatorDashboard /></ProtectedRoute>} />
       <Route path="/my-bookings" element={<ProtectedRoute><MyBookings /></ProtectedRoute>} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/onboarding" element={<ProtectedRoute role="influencer"><Onboarding /></ProtectedRoute>} />
-      <Route path="/forgot-password" element={<ForgotPassword />} />
+  
       <Route path="/availability" element={<ProtectedRoute role="influencer"><AvailabilityManager /></ProtectedRoute>} />
       
       <Route path="*" element={<Navigate to="/" replace />} />
