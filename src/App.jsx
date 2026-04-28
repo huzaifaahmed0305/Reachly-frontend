@@ -12,10 +12,9 @@ import MyBookings from './pages/MyBookings'
 import Admin from './pages/Admin'
 import Onboarding from './pages/Onboarding'
 import ForgotPassword from './pages/forgotpassword'
-import AvailabilityManager from './pages/availabilityManager'
+import AvailabilityManager from './pages/src/pages/AvailabilityManager.jsx'
 import CreatorDashboard from './pages/CreatorDashboard'
 import FollowerHome from './pages/FollowerHome'
-
 
 const ProtectedRoute = ({ children, role }) => {
   const { user, loading } = useAuth()
@@ -33,21 +32,23 @@ const AppRoutes = () => (
   <>
     <Navbar />
     <Routes>
-      <Route path="/"                element={<Home />} />
-      <Route path="/login"           element={<Login />} />
-      <Route path="/register"        element={<Register />} />
-      <Route path="/explore"         element={<Explore />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/explore" element={<Explore />} />
       <Route path="/creator/:handle" element={<InfluencerProfile />} />
-      <Route path="/book/:handle"    element={<ProtectedRoute><BookingFlow /></ProtectedRoute>} />
-      <Route path="/dashboard" element={<CreatorDashboard />} />
-  <Route path="/home"      element={<FollowerHome />} /> 
-      <Route path="/dashboard"       element={<ProtectedRoute role="influencer"><Dashboard /></ProtectedRoute>} />
-      <Route path="/my-bookings"     element={<ProtectedRoute><MyBookings /></ProtectedRoute>} />
-      <Route path="/admin"           element={<Admin />} />
+      <Route path="/book/:handle" element={<ProtectedRoute><BookingFlow /></ProtectedRoute>} />
+      
+      <Route path="/dashboard" element={<ProtectedRoute role="influencer"><Dashboard /></ProtectedRoute>} />
+      <Route path="/home" element={<FollowerHome />} />
+      
+      <Route path="/my-bookings" element={<ProtectedRoute><MyBookings /></ProtectedRoute>} />
+      <Route path="/admin" element={<Admin />} />
       <Route path="/onboarding" element={<ProtectedRoute role="influencer"><Onboarding /></ProtectedRoute>} />
-      <Route path="*"                element={<Navigate to="/" replace />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/availability" element={<ProtectedRoute role="influencer"><AvailabilityManager /></ProtectedRoute>} />
+      
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   </>
 )
