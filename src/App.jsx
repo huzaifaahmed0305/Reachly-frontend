@@ -11,7 +11,7 @@ import MyBookings from './pages/MyBookings'
 import Admin from './pages/Admin'
 import Onboarding from './pages/Onboarding'
 import ForgotPassword from './pages/ForgotPassword.jsx'
-import AvailabilityManager from './pages/src/pages/AvailabilityManager.jsx'
+import AvailabilityManager from './pages/src/pages/AvailabilityManager'
 import CreatorDashboard from './pages/CreatorDashboard'
 import FollowerHome from './pages/FollowerHome'
 
