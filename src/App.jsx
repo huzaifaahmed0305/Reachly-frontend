@@ -12,9 +12,9 @@ import MyBookings from './pages/MyBookings'
 import Admin from './pages/Admin'
 import Onboarding from './pages/Onboarding'
 import ForgotPassword from './pages/forgotpassword'
-import AvailabilityManager from './pages/AvailabilityManager'
-import CreatorDashboard from './pages/CreatorDashboard'
-import FollowerHome from './pages/FollowerHome'
+import AvailabilityManager from './pages/availabilityManager'
+//import CreatorDashboard from './pages/CreatorDashboard'
+//import FollowerHome from './pages/FollowerHome'
 
 
 const ProtectedRoute = ({ children, role }) => {
@@ -39,8 +39,8 @@ const AppRoutes = () => (
       <Route path="/explore"         element={<Explore />} />
       <Route path="/creator/:handle" element={<InfluencerProfile />} />
       <Route path="/book/:handle"    element={<ProtectedRoute><BookingFlow /></ProtectedRoute>} />
-       <Route path="/dashboard" element={<CreatorDashboard />} />
-  <Route path="/home"      element={<FollowerHome />} />
+     {/*}  <Route path="/dashboard" element={<CreatorDashboard />} />
+  <Route path="/home"      element={<FollowerHome />} /> */}
       <Route path="/dashboard"       element={<ProtectedRoute role="influencer"><Dashboard /></ProtectedRoute>} />
       <Route path="/my-bookings"     element={<ProtectedRoute><MyBookings /></ProtectedRoute>} />
       <Route path="/admin"           element={<Admin />} />
