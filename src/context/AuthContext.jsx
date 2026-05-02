@@ -2,9 +2,14 @@ import { createContext, useContext, useState, useEffect } from 'react'
 import axios from 'axios'
 
 const AuthContext = createContext(null)
-
-// Direct API URL — no proxy
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
+
+// Axios interceptor — attach token to every request
+axios.interceptors.request.use(config => {
+  const token = localStorage.getItem('reachly_token')
+  if (token) config.headers.Authorization = `Bearer ${token}`
+  return config
+})
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser]       = useState(null)
@@ -20,7 +25,6 @@ export const AuthProvider = ({ children }) => {
   }, [])
 
   const login = async (email, password) => {
-    console.log('[AUTH] Login to:', API_URL)
     const { data } = await axios.post(`${API_URL}/auth/login`, { email, password })
     localStorage.setItem('reachly_token', data.token)
     localStorage.setItem('reachly_user', JSON.stringify(data.user))
@@ -29,7 +33,6 @@ export const AuthProvider = ({ children }) => {
   }
 
   const register = async (payload) => {
-    console.log('[AUTH] Register to:', API_URL)
     const { data } = await axios.post(`${API_URL}/auth/register`, payload)
     localStorage.setItem('reachly_token', data.token)
     localStorage.setItem('reachly_user', JSON.stringify(data.user))
@@ -41,6 +44,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('reachly_token')
     localStorage.removeItem('reachly_user')
     setUser(null)
+    window.location.href = '/'
   }
 
   return (

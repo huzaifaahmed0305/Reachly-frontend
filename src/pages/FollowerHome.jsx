@@ -1,10 +1,3 @@
-/**
- * FollowerHome.jsx → src/pages/FollowerHome.jsx
- * Unique post-login UI for followers
- * Add route in App.jsx:
- *   <Route path="/home" element={<ProtectedRoute><FollowerHome /></ProtectedRoute>} />
- * Also update Login.jsx: navigate followers to /home instead of /explore
- */
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
@@ -27,79 +20,69 @@ export default function FollowerHome() {
         api.get('/bookings/my'),
       ])
       setCreators(cRes.data.influencers || [])
-      setBookings((bRes.data.bookings || []).slice(0, 3))
-    } catch (e) { console.error(e) }
+      setBookings(bRes.data.bookings || [])
+    } catch(e){ console.error(e) }
     finally { setLoading(false) }
   }
 
-  const formatDate = (d) => new Date(d).toLocaleDateString('en-PK', {
-    weekday: 'short', month: 'short', day: 'numeric',
-    hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Karachi'
+  const fmt = (d) => new Date(d).toLocaleDateString('en-PK',{
+    weekday:'short', month:'short', day:'numeric',
+    hour:'2-digit', minute:'2-digit', timeZone:'Asia/Karachi'
   })
 
-  if (loading) return <div className={s.loading}><div className={s.spinner} /></div>
+  const upcoming = bookings.filter(b => b.status==='confirmed' && new Date(b.scheduled_at) > new Date())
 
-  const upcoming = bookings.filter(b =>
-    b.status === 'confirmed' && new Date(b.scheduled_at) > new Date()
+  if (loading) return (
+    <div className={s.loading}><div className={s.spinner}/></div>
   )
 
   return (
     <div className={s.page}>
-
-      {/* NAV */}
+      {/* SINGLE NAV */}
       <nav className={s.nav}>
-        <div className={s.navLogo}>Reachly</div>
+        <div className={s.navLogo} onClick={() => navigate('/home')} style={{cursor:'pointer'}}>Reachly</div>
         <div className={s.navLinks}>
           <button className={s.navLink} onClick={() => navigate('/explore')}>Explore</button>
           <button className={s.navLink} onClick={() => navigate('/my-bookings')}>My Bookings</button>
         </div>
         <div className={s.navRight}>
-          <div className={s.navUser}>{user?.name?.split(' ')[0]}</div>
+          <span className={s.navUser}>{user?.name?.split(' ')[0]}</span>
           <button className={s.navLogout} onClick={logout}>Log out</button>
         </div>
       </nav>
 
-      <div className={s.content}>
-
-        {/* WELCOME HERO */}
-        <div className={s.welcomeHero}>
-          <div className={s.welcomeLeft}>
-            <div className={s.welcomeTag}>Welcome back 👋</div>
-            <div className={s.welcomeName}>{user?.name?.split(' ')[0]}.</div>
-            <div className={s.welcomeSub}>
-              Your favourite creators are ready to talk.<br/>
-              Book a session and get real answers.
-            </div>
-            <button className={s.exploreBtn} onClick={() => navigate('/explore')}>
-              Browse all creators →
-            </button>
+      <div className={s.wrap}>
+        {/* WELCOME */}
+        <div className={s.hero}>
+          <div className={s.heroLeft}>
+            <div className={s.heroTag}>Welcome back 👋</div>
+            <div className={s.heroName}>{user?.name?.split(' ')[0]}.</div>
+            <div className={s.heroSub}>Your favourite creators are ready to talk.<br/>Book a session and get real answers.</div>
+            <button className={s.exploreBtn} onClick={() => navigate('/explore')}>Browse all creators →</button>
           </div>
-          <div className={s.welcomeRight}>
-            {/* Stats pill */}
-            <div className={s.heroPill}>
-              <div className={s.pillItem}>
-                <div className={s.pillNum}>{bookings.length}</div>
-                <div className={s.pillLabel}>Sessions booked</div>
-              </div>
-              <div className={s.pillDivider} />
-              <div className={s.pillItem}>
-                <div className={s.pillNum}>{upcoming.length}</div>
-                <div className={s.pillLabel}>Upcoming</div>
-              </div>
+          <div className={s.heroPill}>
+            <div className={s.pillItem}>
+              <div className={s.pillNum}>{bookings.length}</div>
+              <div className={s.pillLabel}>Sessions booked</div>
+            </div>
+            <div className={s.pillDiv}/>
+            <div className={s.pillItem}>
+              <div className={s.pillNum}>{upcoming.length}</div>
+              <div className={s.pillLabel}>Upcoming</div>
             </div>
           </div>
         </div>
 
-        {/* UPCOMING SESSION — if any */}
+        {/* NEXT SESSION */}
         {upcoming.length > 0 && (
           <div className={s.section}>
             <div className={s.sectionTitle}>Your next session</div>
-            <div className={s.nextSession}>
-              <div className={s.nsLeft}>
-                <div className={s.nsCreator}>{upcoming[0].influencers?.name}</div>
-                <div className={s.nsType}>{upcoming[0].session_types?.title}</div>
-                <div className={s.nsTime}>{formatDate(upcoming[0].scheduled_at)}</div>
-                <div className={s.nsRef}>{upcoming[0].booking_ref}</div>
+            <div className={s.nextCard}>
+              <div className={s.ncLeft}>
+                <div className={s.ncCreator}>{upcoming[0].influencers?.name}</div>
+                <div className={s.ncType}>{upcoming[0].session_types?.title}</div>
+                <div className={s.ncTime}>{fmt(upcoming[0].scheduled_at)}</div>
+                <div className={s.ncRef}>{upcoming[0].booking_ref}</div>
               </div>
               {upcoming[0].meet_link && (
                 <a href={upcoming[0].meet_link} target="_blank" rel="noreferrer" className={s.joinBtn}>
@@ -112,22 +95,25 @@ export default function FollowerHome() {
 
         {/* FEATURED CREATORS */}
         <div className={s.section}>
-          <div className={s.sectionHeader}>
+          <div className={s.sectionHead}>
             <div className={s.sectionTitle}>Featured creators</div>
             <button className={s.seeAll} onClick={() => navigate('/explore')}>See all →</button>
           </div>
-          <div className={s.creatorsGrid}>
+          <div className={s.grid}>
+            {creators.length === 0 && (
+              <div className={s.noCreators}>No creators yet. Check back soon!</div>
+            )}
             {creators.map(c => (
               <div key={c.id} className={s.creatorCard} onClick={() => navigate(`/creator/${c.handle}`)}>
-                <div className={s.creatorAv}>
+                <div className={s.cAvWrap}>
                   {c.avatar_url
-                    ? <img src={c.avatar_url} alt={c.name} className={s.creatorAvImg} />
-                    : <div className={s.creatorAvLetter}>{c.name?.[0]}</div>
+                    ? <img src={c.avatar_url} alt={c.name} className={s.cAvImg}/>
+                    : <div className={s.cAvLetter}>{c.name?.[0]}</div>
                   }
                 </div>
-                <div className={s.creatorName}>{c.name}</div>
-                <div className={s.creatorHandle}>@{c.handle}</div>
-                <div className={s.creatorRating}>{c.rating || 5.0}★</div>
+                <div className={s.cName}>{c.name}</div>
+                <div className={s.cHandle}>@{c.handle}</div>
+                <div className={s.cRating}>{c.rating||5.0}★</div>
                 <button className={s.bookBtn}>Book session</button>
               </div>
             ))}
@@ -137,20 +123,20 @@ export default function FollowerHome() {
         {/* RECENT BOOKINGS */}
         {bookings.length > 0 && (
           <div className={s.section}>
-            <div className={s.sectionHeader}>
+            <div className={s.sectionHead}>
               <div className={s.sectionTitle}>Recent bookings</div>
               <button className={s.seeAll} onClick={() => navigate('/my-bookings')}>See all →</button>
             </div>
             <div className={s.recentList}>
-              {bookings.map(b => (
+              {bookings.slice(0,3).map(b => (
                 <div key={b.id} className={s.recentCard}>
-                  <div className={s.recentInfo}>
-                    <div className={s.recentCreator}>{b.influencers?.name}</div>
-                    <div className={s.recentType}>{b.session_types?.title} · {formatDate(b.scheduled_at)}</div>
+                  <div className={s.rInfo}>
+                    <div className={s.rCreator}>{b.influencers?.name}</div>
+                    <div className={s.rType}>{b.session_types?.title} · {fmt(b.scheduled_at)}</div>
                   </div>
-                  <div className={s.recentRight}>
-                    <div className={s.recentAmount}>Rs {b.gross_amount_pkr?.toLocaleString()}</div>
-                    {b.meet_link && b.status === 'confirmed' && (
+                  <div className={s.rRight}>
+                    <div className={s.rAmount}>Rs {(b.gross_amount_pkr||0).toLocaleString()}</div>
+                    {b.meet_link && b.status==='confirmed' && (
                       <a href={b.meet_link} target="_blank" rel="noreferrer" className={s.meetSmall}>Join →</a>
                     )}
                   </div>
@@ -160,6 +146,11 @@ export default function FollowerHome() {
           </div>
         )}
 
+        {/* FOOTER */}
+        <footer className={s.footer}>
+          <div>© Reachly 2026. All rights reserved.</div>
+          <div>Made with ❤️ by <a href="https://instagram.com/huzaifaahmed0305" target="_blank" rel="noreferrer" className={s.footerLink}>@huzaifaahmed0305</a></div>
+        </footer>
       </div>
     </div>
   )
