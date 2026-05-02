@@ -185,7 +185,7 @@ export default function CreatorDashboard() {
         {/* FOOTER */}
         <footer className={s.footer}>
           <div>© Reachly 2026. All rights reserved.</div>
-          <div>Made with ❤️ by <a href="https://instagram.com/huzaifaahmed0305" target="_blank" rel="noreferrer" className={s.footerLink}>@huzaifaahmed0305</a></div>
+          <div>Made with ❤️ by <a href="https://instagram.com/ihuzaifaahmed" target="_blank" rel="noreferrer" className={s.footerLink}>@huzaifaahmed0305</a></div>
         </footer>
       </div>
     </div>
